@@ -85,4 +85,14 @@ very likely the model should be retrained or fine-tuned with custom quantization
 performance can degrade if we do just a post-training quantization.
 
 
+**4. Encouraging RNN-T faster token emission with a custom loss function** 
+
+This requires model retraining and re-engineering of the RNN-T loss function to encourage earlier token emission.
+The idea is described in the paper _FASTEMIT: LOW-LATENCY STREAMING ASR WITH
+SEQUENCE-LEVEL EMISSION REGULARIZATION_ (https://storage.googleapis.com/gweb-research2023-media/pubtools/6129.pdf)
+Applying this technique can decrease stabilization latency (partial result latency), but 
+can make **WER / CER** metrics worse.
+
+
+
 
