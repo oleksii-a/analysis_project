@@ -89,7 +89,7 @@ if __name__ == "__main__":
 
                 hypothesis = hypos
 
-                # we don't measure latency of a token process, we assume it to be ~0
+                # we don't measure latency of a token processor, we assume it to be ~0
                 if args.print_transcript:
                     transcript = token_processor(hypos[0][0], lstrip=False)
                     print(transcript)
