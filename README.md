@@ -38,6 +38,12 @@ We have run the benchmark on the machine equipped with T4 GPU and default parame
 
 **Real-time factor:** 0.5560858685985889
 
+The latency distributions are presented below:
+
+![Feature extraction latencies histogram](images/feat_lat.png)
+
+![Model inference latencies histogram](images/model_lat.png)
+
 As we can see from the analysis above, the total latency amounts to **~360 ms**, 55% of which is attached to 
 the algorithmic latency alone. For the computational latencies, we rely on 95-percentile figures, as they more naturally depict
 the worst-case scenario which is crucial for user experience.
@@ -60,7 +66,5 @@ therefor we should use a 3rd-party or custom implementation.
 very likely the model should be retrained or fine-tuned with custom quantization-aware training methods, as the 
 performance can significantly degrade otherwise.
 
-![Feature extraction latencies histogram](images/feat_lat.png)
 
-![Model inference latencies histogram](images/model_lat.png)
 
