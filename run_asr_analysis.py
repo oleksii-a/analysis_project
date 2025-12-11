@@ -124,7 +124,7 @@ if __name__ == "__main__":
     plt.figure()
     plt.hist(infer_latencies, bins=50)
     plt.grid()
-    plt.title("Inference latency")
+    plt.title("Model inference latency")
     plt.xlabel("Latency, sec")
     plt.ylabel("Count")
 

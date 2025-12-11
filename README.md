@@ -60,5 +60,7 @@ therefor we should use a 3rd-party or custom implementation.
 very likely the model should be retrained or fine-tuned with custom quantization-aware training methods, as the 
 performance can significantly degrade otherwise.
 
+![Feature extraction latencies histogram](images/feat_lat.png)
 
+![Model inference latencies histogram](images/model_lat.png)
 
