@@ -34,6 +34,7 @@ class ContextCacher:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="")
     parser.add_argument("--beam-width", type=int, default=10)
+    parser.add_argument("--print-transcript", action="store_true", help="Prints transcript output")
     args = parser.parse_args()
 
     files = [os.path.join("audio", filename) for filename in os.listdir("audio")]
@@ -88,9 +89,10 @@ if __name__ == "__main__":
 
                 hypothesis = hypos
 
-                #
-                transcript = token_processor(hypos[0][0], lstrip=False)
-                print(transcript)
+                # we don't measure latency of a token process, we assume it to be ~0
+                if args.print_transcript:
+                    transcript = token_processor(hypos[0][0], lstrip=False)
+                    print(transcript)
 
                 #
                 num_samples += len(segment)
@@ -99,7 +101,7 @@ if __name__ == "__main__":
     total_audio_dur = num_samples / SAMPLE_RATE
     rtf = np.sum(infer_latencies + feat_latencies + mem_latencies) / total_audio_dur
 
-    #
+    # 95-percentile for worst-case scenario
     infer_latency_p95 = np.percentile(infer_latencies, 95)
     feat_latency_p95 = np.percentile(feat_latencies, 95)
     mem_latency_p95 = np.percentile(mem_latencies, 95)
@@ -120,16 +122,16 @@ if __name__ == "__main__":
 
     #
     plt.figure()
-    plt.grid()
     plt.hist(infer_latencies, bins=50)
+    plt.grid()
     plt.title("Inference latency")
     plt.xlabel("Latency, sec")
     plt.ylabel("Count")
 
     #
     plt.figure()
-    plt.grid()
     plt.hist(feat_latencies, bins=50)
+    plt.grid()
     plt.title("Feature extraction latency")
     plt.xlabel("Latency, sec")
     plt.ylabel("Count")
