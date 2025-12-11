@@ -8,10 +8,12 @@ We use a small subset of 20 utterances from LibriSpeech-test, which we include i
 
 1. Create and activate virtual environment as follows:
 `conda env create -f environment.yml -n myenv`
+
 `conda activate myenv`
 
 Alternatively, if a standalone virtual environment is not an option, it is still possible to use **requirements.txt** to install
 the required packages to the existing environment.
+
 2. Run benchmark:
 `python run_asr_analysis.py --beam-width 10`
 
